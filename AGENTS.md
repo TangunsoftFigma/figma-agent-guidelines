@@ -6,26 +6,27 @@
 
 <!-- CUSTOMIZE: 서비스 이름과 한 줄 설명 -->
 
-## 먼저 읽기
+## 읽는 방법
 
-1. [design-system/principles.md](design-system/principles.md) — 모든 규칙의 근거
-2. [design-system/tokens/README.md](design-system/tokens/README.md) — 컬렉션 구조와 문서 위치
+아래 표에서 지금 작업에 해당하는 문서만 읽는다. 전부 읽지 않는다.
 
-그다음 아래 표에서 지금 작업에 해당하는 문서만 읽는다. 전부 읽지 않는다.
+- 화면 작업(만들기·수정·리디자인)은 [design-system/agent-brief.md](design-system/agent-brief.md) 하나로 시작한다. 판단이 안 될 때만 원본 문서의 해당 항목 하나를 찾아 읽는다.
+- `principles.md`와 `tokens/README.md`는 규칙을 고치거나 토큰을 추가·변경할 때만 읽는다.
+- `tokens/values/`(hex·px 값 표)는 값이 꼭 필요할 때만 연다.
 
 ## 작업별 라우팅
 
 | 작업 | 읽을 문서 | 따를 절차 |
 |---|---|---|
-| Figma에서 화면 만들기·수정 | `figma-properties.md`, `tokens/semantic-color.md`, `tokens/semantic-responsive.md`, 쓰는 컴포넌트 문서 | 끝나면 `figma-properties.md` 점검표 |
+| Figma에서 화면 만들기·수정·리디자인 | `agent-brief.md` (필요한 항목만 원본에서) | 끝나면 `agent-brief.md`의 마무리 점검 |
 | 컴포넌트 만들기 | `component-patterns.md`, `tokens/components/README.md`, `figma-properties.md` | `playbooks/create-component.md` |
 | 컴포넌트 토큰 만들기 | `tokens/components/README.md`, 해당 컴포넌트 문서 | `playbooks/derive-component-tokens.md` |
 | 토큰 추가 | `naming.md`, 해당 레이어 문서 | `playbooks/add-token.md` |
 | 이름 변경·폐기 | `CHANGELOG.md` | `playbooks/rename-deprecate.md` |
-| 하드코딩 값 정리 | `tokens/foundation.md`의 역조회 | `playbooks/tokenize-hardcoded.md` |
+| 하드코딩 값 정리 | `tokens/values/foundation.values.md`의 역조회 | `playbooks/tokenize-hardcoded.md` |
 | Figma 변경을 레포에 반영 | `tokens/README.md` | `playbooks/sync-from-figma.md` |
 | 코드 작성 | `code-mapping.md`, 해당 컴포넌트 문서 | — |
-| 작업 검증 | `checklist.md`, `figma-properties.md` 점검표 | — |
+| 작업 검증 | 화면: `agent-brief.md` 마무리 점검 · 컴포넌트: `component-patterns.md`·`figma-properties.md` 점검표 · 토큰: `checklist.md` | — |
 
 경로는 모두 `design-system/` 아래다.
 
@@ -43,13 +44,20 @@
 10. 화면은 Frame과 오토 레이아웃으로 만들고, 요소마다 Resizing(Hug·Fill·Fixed)을 의도대로 정한다. [FIG-01, FIG-10, FIG-20]
 11. 컴포넌트를 만들기 전에 `component-patterns.md`에서 같은 컴포넌트의 레시피를 찾고, 기본 크기 수치는 범위 안에서 고른다. 형태를 추측하지 않는다. [PAT-01, PAT-02]
 
+## 여러 프레임을 처리할 때
+
+1. 문서는 세션 시작 때 한 번만 읽는다.
+2. 첫 프레임을 만들고 검증해 패턴(구조, 토큰 선택)을 확정한다.
+3. 나머지 프레임에는 그 패턴을 그대로 적용한다. 프레임마다 문서를 다시 읽거나 같은 판단을 반복하지 않는다.
+4. 검증은 프레임마다 작업이 끝날 때 한 번, 바꾼 노드만 한다. 스크린샷은 프레임당 마지막에 한 번.
+
 ## 명령
 
 - `npm run tokens:sync` — 문서의 GENERATED 블록 갱신
 - `npm run tokens:check` — 규칙 검사. 코드까지 검사하려면 `npm run tokens:check -- --src <폴더>`
 - `npm run tokens:build` — `dist/tokens.css` 생성
 
-Figma 디자인 작업을 마치면 [figma-properties.md 점검표](design-system/figma-properties.md#점검표)로 결과물을 검사한다. 토큰이나 문서를 바꿨다면 `npm run tokens:check`도 실행한다. 두 결과 모두 [checklist.md](design-system/checklist.md)의 보고 형식으로 결과를 보고한다.
+화면 작업을 마치면 [agent-brief.md의 마무리 점검](design-system/agent-brief.md)으로, 컴포넌트 작업을 마치면 [figma-properties.md](design-system/figma-properties.md#점검표)와 [component-patterns.md](design-system/component-patterns.md#점검표) 점검표로 검사한다. 토큰이나 문서를 바꿨다면 `npm run tokens:check`도 실행한다. 두 결과 모두 [checklist.md](design-system/checklist.md)의 보고 형식으로 결과를 보고한다.
 
 ## 승인이 필요한 작업
 

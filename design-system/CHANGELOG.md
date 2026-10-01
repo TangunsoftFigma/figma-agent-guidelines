@@ -22,6 +22,12 @@ status: stable
 
 ## [Unreleased]
 
+### 변경 (크레딧 절감)
+- `agent-brief.md` 추가: 화면 작업용 요약. 토큰 목록(이름·용도·짝)은 JSON에서 자동 생성. AGENTS.md의 화면 작업 경로를 이 파일 하나로 변경
+- 자동 생성 값 표(hex·px, 대비, 역조회)를 `tokens/values/`로 분리
+- AGENTS.md: 매번 principles·tokens/README를 먼저 읽던 지시 삭제, 여러 프레임 처리 순서 추가
+- 검증 범위를 "작업이 끝날 때 한 번, 바꾼 노드만"으로 축소 (FIG-96, CHK-69)
+
 ### 변경
 - `CLAUDE.md`, `.github/copilot-instructions.md` 삭제. 도구 공용 진입점 `AGENTS.md` 하나로 통일 (README의 에이전트 연결 안내 갱신)
 

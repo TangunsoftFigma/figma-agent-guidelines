@@ -68,7 +68,8 @@ Component ──▶ Semantic Color ─────▶ Foundation
 
 | 작업 | 읽을 문서 |
 |---|---|
-| 화면을 만든다 | [figma-properties.md](../figma-properties.md) → semantic-color.md → semantic-responsive.md → 쓰는 컴포넌트 문서 |
+| 화면을 만든다 | [agent-brief.md](../agent-brief.md) → (필요할 때만) 원본 문서의 해당 항목 |
+| 값(hex·px)을 확인한다 | [values/](values/) |
 | 컴포넌트를 만든다 | [component-patterns.md](../component-patterns.md) → [create-component](../playbooks/create-component.md) |
 | 컴포넌트 토큰을 만든다 | [components/README.md](components/README.md) → [derive-component-tokens](../playbooks/derive-component-tokens.md) |
 | 토큰을 추가·변경한다 | [add-token](../playbooks/add-token.md) 또는 [rename-deprecate](../playbooks/rename-deprecate.md) |

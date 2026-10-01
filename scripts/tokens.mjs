@@ -335,6 +335,37 @@ function renderBlocks(ctx) {
     ...names('semantic-responsive').filter((n) => n.startsWith('Font Size/')).map((n) =>
       `| \`${n}\` | ${bps.map((m) => showValue('dimension', resolve(n, { breakpoint: m }).value)).join(' | ')} |`)].join('\n');
 
+  // 에이전트 브리프: 값 없이 이름·용도·짝만 (화면 작업용 요약)
+  const colorEntries = exists(COLLECTIONS['semantic-color'].doc) ? parseEntries(read(COLLECTIONS['semantic-color'].doc)).entries : new Map();
+  const compressPairs = (pairs) => {
+    const byPrefix = new Map();
+    for (const p of pairs) { const i = p.lastIndexOf('/'); const pre = p.slice(0, i), leaf = p.slice(i + 1); if (!byPrefix.has(pre)) byPrefix.set(pre, []); byPrefix.get(pre).push(leaf); }
+    return [...byPrefix].map(([pre, leaves]) => {
+      const all = [...db.keys()].filter((n) => n.startsWith(pre + '/') && n.split('/').length === pre.split('/').length + 1);
+      if (leaves.length === 1) return `${pre}/${leaves[0]}`;
+      return leaves.length === all.length ? `${pre}/*` : `${pre}/(${leaves.join('·')})`;
+    }).join(', ');
+  };
+  const briefColor = [];
+  let lastTop = '';
+  for (const n of names('semantic-color')) {
+    const top = n.split('/')[0];
+    if (top !== lastTop) { briefColor.push(`\n**${top}**`); lastTop = top; }
+    const e = colorEntries.get(n);
+    const role = stripTicks(Object.values(db.get(n).modes)[0].description ?? e?.fields['역할'] ?? '');
+    const pairs = e?.fields['짝'] ? [...e.fields['짝'].matchAll(/`([^`]+)`/g)].map((m) => m[1]) : [];
+    briefColor.push(`- \`${n}\` ${role}${pairs.length ? ` — 짝: ${compressPairs(pairs)}` : ''}`);
+  }
+  blocks['brief-color'] = briefColor.join('\n').trim();
+  const rg = new Map();
+  for (const n of names('semantic-responsive')) { const [top, leaf] = n.split('/'); if (!rg.has(top)) rg.set(top, []); rg.get(top).push(leaf); }
+  blocks['brief-responsive'] = [...rg].map(([top, leaves]) => `- **${top}**: ${leaves.join(' · ')}`).join('\n');
+  blocks['brief-components'] = componentDocs().filter((d) => d.prefix).map((d) => {
+    const list = names('component').filter((n) => n.split('/')[0] === d.prefix);
+    const variants = [...new Set(list.map((n) => n.split('/')[1]))].filter((v) => v !== 'Base');
+    return `- **${d.prefix}** ([문서](tokens/components/${d.file})) — 배리언트 자리: ${variants.join(' · ')}. 토큰 ${list.length}개는 인스턴스에 이미 바인딩되어 있다`;
+  }).join('\n') || '- (아직 없음)';
+
   // tokens/README.md 컬렉션 요약
   blocks['collections-summary'] = ['| 컬렉션 | 레이어 | 모드 | 토큰 수 | 파일 |', '|---|---|---|---|---|',
     ...Object.entries(COLLECTIONS).filter(([c]) => modeOrder[c]).map(([c, def]) =>
@@ -345,8 +376,10 @@ function renderBlocks(ctx) {
 
 const BLOCK_RE = /(<!-- GENERATED:START id=([\w:.-]+)[^>]*-->)[\s\S]*?<!-- GENERATED:END -->/g;
 function docTargets() {
-  const list = ['DESIGN.md', 'design-system/tokens/README.md', ...Object.values(COLLECTIONS).map((c) => c.doc).filter(Boolean),
-    ...componentDocs().map((d) => d.rel)];
+  const valuesDir = path.join(ROOT, 'design-system/tokens/values');
+  const values = fs.existsSync(valuesDir) ? fs.readdirSync(valuesDir).filter((f) => f.endsWith('.md')).sort().map((f) => `design-system/tokens/values/${f}`) : [];
+  const list = ['DESIGN.md', 'design-system/agent-brief.md', 'design-system/tokens/README.md', ...Object.values(COLLECTIONS).map((c) => c.doc).filter(Boolean),
+    ...values, ...componentDocs().map((d) => d.rel)];
   return list.filter(exists);
 }
 function applyBlocks(rel, md, blocks, missing) {

@@ -13,6 +13,7 @@ DESIGN.md                      화면 생성 도구용 한 장 요약
   pull_request_template.md     토큰 변경 PR 체크 항목
   workflows/tokens-check.yml   PR마다 자동 검사
 design-system/
+  agent-brief.md               화면 작업용 요약 — 에이전트가 화면 작업 때 이 파일 하나로 시작
   principles.md                설계 원칙 (PRN)
   naming.md                    이름 문법과 허용 어휘 (NAM)
   glossary.md                  용어 사전
@@ -28,6 +29,7 @@ design-system/
     semantic-color.md          색 결정 — 테마 모드 (SEM)
     semantic-responsive.md     공간·크기·모양·타이포 결정 — 폭 모드 (RSP)
     components/                컴포넌트별 배선 (CMP) — README, _template, button
+    values/                    자동 생성 값 표 (hex·px, 대비, 역조회) — 값이 필요할 때만
   playbooks/                   반복 작업 절차 6종
   decisions/                   결정 기록 (ADR)
 tokens/                        Figma에서 내보낸 DTCG JSON (지금은 샘플)
