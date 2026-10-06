@@ -1,75 +1,79 @@
 # AGENTS.md
 
-이 레포는 디자인 시스템의 토큰 규칙을 AI 에이전트에게 전달합니다. 값의 원본은 Figma 배리어블이고, 이 레포는 그 값의 거울(`tokens/`)과 결정(`design-system/`)을 담습니다.
+이 레포는 Figma에서 디자인 작업을 할 때 AI 에이전트에게 전달할 최소 규칙을 담습니다.
 
-이 파일은 특정 AI 도구 전용이 아닌 공용 지침입니다. 어떤 에이전트든 이 파일을 규칙의 원본으로 삼습니다.
+범위는 **Figma 디자인 전용**입니다. 에이전트는 화면 만들기, 화면 수정, 리디자인, 컴포넌트 사용 방식 정리까지만 돕습니다. 코드 작성, 토큰 JSON 동기화, CSS 빌드, 자동 검사, 배포 작업은 하지 않습니다.
 
 <!-- CUSTOMIZE: 서비스 이름과 한 줄 설명 -->
 
 ## 읽는 방법
 
-아래 표에서 지금 작업에 해당하는 문서만 읽는다. 전부 읽지 않는다.
+1. 먼저 `DESIGN.md`를 읽고 서비스의 분위기, 색, 글자, 컴포넌트, 레이아웃 기준을 파악한다.
+2. Figma 변수나 토큰이 필요한 작업이면 `Token.md`를 읽고, 필요한 단계의 토큰 문서만 추가로 읽는다.
+3. Figma 작업을 마치면 `CHECKLIST.md`로 점검한다.
+4. 판단이 안 되는 내용은 추측하지 말고, 수강생에게 어떤 항목을 더 채워야 하는지 묻는다.
 
-- 화면 작업(만들기·수정·리디자인)은 [design-system/agent-brief.md](design-system/agent-brief.md) 하나로 시작한다. 판단이 안 될 때만 원본 문서의 해당 항목 하나를 찾아 읽는다.
-- `principles.md`와 `tokens/README.md`는 규칙을 고치거나 토큰을 추가·변경할 때만 읽는다.
-- `tokens/values/`(hex·px 값 표)는 값이 꼭 필요할 때만 연다.
+## 작업 범위
 
-## 작업별 라우팅
-
-| 작업 | 읽을 문서 | 따를 절차 |
+| 작업 | 기준 문서 | 결과 |
 |---|---|---|
-| Figma에서 화면 만들기·수정·리디자인 | `agent-brief.md` (필요한 항목만 원본에서) | 끝나면 `agent-brief.md`의 마무리 점검 |
-| 컴포넌트 만들기 | `component-patterns.md`, `tokens/components/README.md`, `figma-properties.md` | `playbooks/create-component.md` |
-| 컴포넌트 토큰 만들기 | `tokens/components/README.md`, 해당 컴포넌트 문서 | `playbooks/derive-component-tokens.md` |
-| 토큰 추가 | `naming.md`, 해당 레이어 문서 | `playbooks/add-token.md` |
-| 이름 변경·폐기 | `CHANGELOG.md` | `playbooks/rename-deprecate.md` |
-| 하드코딩 값 정리 | `tokens/values/foundation.values.md`의 역조회 | `playbooks/tokenize-hardcoded.md` |
-| Figma 변경을 레포에 반영 | `tokens/README.md` | `playbooks/sync-from-figma.md` |
-| 코드 작성 | `code-mapping.md`, 해당 컴포넌트 문서 | — |
-| 작업 검증 | 화면: `agent-brief.md` 마무리 점검 · 컴포넌트: `component-patterns.md`·`figma-properties.md` 점검표 · 토큰: `checklist.md` | — |
-
-경로는 모두 `design-system/` 아래다.
+| Figma 화면 만들기 | `DESIGN.md` | 화면 프레임 |
+| Figma 화면 수정·리디자인 | `DESIGN.md` | 수정된 화면 프레임 |
+| 토큰 구조 정리 | `Token.md` | Foundation → Semantic → Component 상속 구조 |
+| Foundation 토큰 제안 | `Foundation-token.md` | 원재료 변수 목록 |
+| Semantic 토큰 제안 | `Semantic-token.md` | 화면에서 쓸 의미 변수 목록 |
+| Component 토큰 제안 | `Component-token.md` | 컴포넌트별 변수 목록 |
+| 컴포넌트 크기·구조 참고 | `design-system/component-patterns.md` | 공개 디자인 시스템 기반 레시피 |
+| 컴포넌트 사용 방식 정리 | `DESIGN.md`의 컴포넌트 섹션 | 컴포넌트·배리언트 제안 |
+| 작업 검증 | `CHECKLIST.md` | 점검 결과 보고 |
 
 ## 항상 지키는 규칙
 
-1. 화면과 코드에 원시값(hex, px)을 쓰지 않는다. [PRN-06]
-2. Foundation 토큰을 레이어나 코드에 직접 쓰지 않는다. [FND-01]
-3. 목록에 없는 토큰을 만들지 않는다. 맞는 토큰이 없으면 멈추고 add-token 형식으로 제안한다. [PRN-07]
-4. 참조는 Component → Semantic → Foundation, 한 단계 아래로만. [PRN-03]
-5. 테마와 화면 폭에 따라 다른 토큰을 고르지 않는다. 같은 토큰에 모드를 적용한다. [PRN-04, RSP-01]
-6. 텍스트·아이콘·테두리는 문서의 `짝` 목록에 있는 면 위에서만 쓴다. [SEM-05]
-7. `Primary` 톤은 라이트에서 검정, 다크에서 흰색인 주요 행동이다. 브랜드 색은 `Accent`다. [ADR-0001]
-8. CHANGELOG의 폐기 예정 표에 있는 토큰은 새로 쓰지 않는다.
-9. `tokens/*.tokens.json`, `GENERATED` 블록, `dist/`를 직접 고치지 않는다. [PRN-01, MAP-04]
-10. 화면은 Frame과 오토 레이아웃으로 만들고, 요소마다 Resizing(Hug·Fill·Fixed)을 의도대로 정한다. [FIG-01, FIG-10, FIG-20]
-11. 컴포넌트를 만들기 전에 `component-patterns.md`에서 같은 컴포넌트의 레시피를 찾고, 기본 크기 수치는 범위 안에서 고른다. 형태를 추측하지 않는다. [PAT-01, PAT-02]
+1. Figma 밖의 코드는 만들거나 고치지 않는다.
+2. 색, 글꼴, 간격, 모서리, 그림자는 가능한 한 Figma 변수나 스타일로 지정한다.
+3. 변수나 스타일이 없으면 임의 값으로 밀어붙이지 않고, 필요한 변수·스타일 이름을 제안한다.
+4. 토큰은 Foundation → Semantic → Component → 화면 순서로만 연결한다.
+5. 화면에서 Foundation Token을 직접 쓰지 않는다.
+6. 화면은 Frame과 Auto layout을 기본으로 만든다.
+7. Group, 불필요한 Mask, 기본 이름 그대로 남은 레이어를 피한다.
+8. 텍스트는 Text Style을 우선 사용한다.
+9. 버튼, 입력, 카드, 내비게이션처럼 반복되는 요소는 컴포넌트나 인스턴스로 다룬다.
+10. 컴포넌트의 크기와 구조를 정할 때는 `design-system/component-patterns.md`의 레시피를 먼저 확인한다.
+11. Light/Dark, Mobile/Desktop 같은 모드가 있으면 한쪽만 확인하고 끝내지 않는다.
+12. 포커스 상태는 채움 색만 바꾸지 말고 링이나 명확한 외곽선으로 표현한다.
+13. `DESIGN.md`에 없는 중요한 디자인 결정을 새로 해야 하면 먼저 제안하고 승인을 받는다.
 
 ## 여러 프레임을 처리할 때
 
-1. 문서는 세션 시작 때 한 번만 읽는다.
-2. 첫 프레임을 만들고 검증해 패턴(구조, 토큰 선택)을 확정한다.
-3. 나머지 프레임에는 그 패턴을 그대로 적용한다. 프레임마다 문서를 다시 읽거나 같은 판단을 반복하지 않는다.
-4. 검증은 프레임마다 작업이 끝날 때 한 번, 바꾼 노드만 한다. 스크린샷은 프레임당 마지막에 한 번.
-
-## 명령
-
-- `npm run tokens:sync` — 문서의 GENERATED 블록 갱신
-- `npm run tokens:check` — 규칙 검사. 코드까지 검사하려면 `npm run tokens:check -- --src <폴더>`
-- `npm run tokens:build` — `dist/tokens.css` 생성
-
-화면 작업을 마치면 [agent-brief.md의 마무리 점검](design-system/agent-brief.md)으로, 컴포넌트 작업을 마치면 [figma-properties.md](design-system/figma-properties.md#점검표)와 [component-patterns.md](design-system/component-patterns.md#점검표) 점검표로 검사한다. 토큰이나 문서를 바꿨다면 `npm run tokens:check`도 실행한다. 두 결과 모두 [checklist.md](design-system/checklist.md)의 보고 형식으로 결과를 보고한다.
+1. 첫 프레임에서 구조, 변수 선택, 컴포넌트 사용 패턴을 정한다.
+2. 나머지 프레임에는 같은 패턴을 적용한다.
+3. 프레임마다 같은 판단을 반복하지 않는다.
+4. 검증은 프레임마다 작업이 끝날 때 한 번, 바꾼 부분 중심으로 한다.
 
 ## 승인이 필요한 작업
 
-아래는 먼저 제안하고, 사람이 승인한 뒤에 실행한다.
+아래 작업은 먼저 제안하고, 사람이 승인한 뒤에 실행한다.
 
-- Figma 배리어블 생성, 삭제, 이름 변경
-- 하드코딩 매핑표의 일괄 교체
-- 규칙 문서(principles, naming의 허용 어휘, 각 레이어의 규칙) 수정
+- Figma 변수 생성, 삭제, 이름 변경
+- Text Style 생성, 삭제, 이름 변경
+- 컴포넌트 구조 변경
+- `DESIGN.md`의 디자인 원칙 변경
+- `Token.md`, `Foundation-token.md`, `Semantic-token.md`, `Component-token.md`의 토큰 구조 변경
 
 ## 문서를 고칠 때
 
 - 프런트매터를 유지한다.
-- 규칙은 `[ID] MUST / MUST NOT` + 한 줄 이유 형식을 지킨다.
-- 토큰 항목은 필드 순서를 지킨다 (역할 → 쓸 때 → 쓰지 말 때 → 짝 → 대비 기준 → 스코프 → 코드 → 상태 → 비고).
 - `<!-- CUSTOMIZE: ... -->` 주석은 사람이 바꿀 곳 표시다. 요청받지 않으면 지우지 않는다.
+- 예시 값을 넣더라도 수강생이 바꿀 수 있게 짧고 명확하게 쓴다.
+
+## 보고 형식
+
+작업을 마치면 아래 형식으로 보고한다.
+
+```
+검증 결과
+- 범위: Figma 디자인 작업만 진행
+- 확인: CHECKLIST.md 기준으로 확인한 항목
+- 미확인: 실제 Figma 상태 때문에 확인하지 못한 항목
+- 수정 제안: 다음에 고치면 좋은 항목
+```

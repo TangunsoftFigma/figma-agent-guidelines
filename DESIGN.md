@@ -1,69 +1,187 @@
 ---
 name: 서비스 이름
-description: 모바일 우선 앱의 디자인 요약
+description: 서비스 한 줄 설명
 ---
 
-<!-- CUSTOMIZE: 서비스 이름, 설명, 분위기를 내 서비스로 바꾼다 -->
+<!-- CUSTOMIZE: 서비스 이름, 설명과 아래 1~9의 빈 칸을 내 서비스로 채운다 -->
 
 # 디자인 요약
 
-이 문서는 화면 생성 도구와 에이전트가 한 번에 읽는 요약본입니다. 세부 규칙은 `design-system/`에 있고, 둘이 다르면 `design-system/`이 맞습니다.
+이 문서는 Figma 화면 생성 도구와 AI 에이전트가 함께 읽는 디자인 브리프입니다. 값은 수강생이 직접 채웁니다.
 
-## 분위기
+## 1. 분위기
 
-- 차분하고 단정하다. 기록이 주인공이고 장식은 최소로 한다.
-- 고대비 무채색이 기본이고, 브랜드 파랑은 강조에만 쓴다.
-- 완료 같은 성취는 색보다 숫자와 체크 표시로 먼저 보여준다.
+<!-- CUSTOMIZE: 서비스가 주는 인상을 2~3문단으로 쓴다 -->
 
-## 색
 
-역할로 고른다. 값은 아래 표처럼 모드에 따라 바뀐다. 전체 목록과 짝 규칙은 [semantic-color.md](design-system/tokens/semantic-color.md).
+**핵심 특징**
 
-<!-- GENERATED:START id=design-summary — tokens/*.tokens.json에서 생성됨. 직접 수정하지 말고 npm run tokens:sync -->
-| 역할 | 토큰 | Light | Dark |
+<!-- CUSTOMIZE: 위 내용을 5~9개 항목으로 줄인다 -->
+
+-
+
+## 2. 색과 역할
+
+<!-- CUSTOMIZE: 항목은 "- **이름**: 역할 / Figma 변수 또는 스타일" 형식으로 쓴다 -->
+
+### 브랜드
+
+-
+
+### 텍스트
+
+-
+
+### 인터랙션
+
+-
+
+### 면과 그림자
+
+-
+
+## 3. 타이포그래피
+
+### 글꼴
+
+<!-- CUSTOMIZE: 기본 글꼴과 대체 글꼴을 쓴다 -->
+
+- **기본**:
+- **대체**:
+
+### 위계
+
+<!-- CUSTOMIZE: Text Style마다 한 줄로 채운다 -->
+
+| 역할 | Text Style | 크기 | 굵기 | 줄 높이 | 비고 |
+|---|---|---|---|---|---|
+| | | | | | |
+
+### 원칙
+
+<!-- CUSTOMIZE: 굵기 범위, 자간, 긴 문구 처리, 숫자 표기 원칙 등을 쓴다 -->
+
+-
+
+## 4. 컴포넌트
+
+<!-- CUSTOMIZE: 컴포넌트마다 쓰는 곳, 배리언트, 상태, 주의점을 쓴다 -->
+
+### 버튼
+
+-
+
+### 카드와 컨테이너
+
+-
+
+### 입력
+
+-
+
+### 내비게이션
+
+-
+
+### 이미지
+
+-
+
+## 5. 레이아웃
+
+### 간격 체계
+
+<!-- CUSTOMIZE: 기본 단위와 단계, 섹션 간격, 요소 간격을 쓴다 -->
+
+- 기본 단위:
+- 단계:
+
+### 그리드와 컨테이너
+
+-
+
+### 여백 원칙
+
+-
+
+### 모서리 반경
+
+<!-- CUSTOMIZE: "- 이름: 쓰는 곳 / Figma 변수" 형식으로 쓴다 -->
+
+-
+
+## 6. 깊이와 높낮이
+
+| 단계 | 처리 | 쓰는 곳 |
+|---|---|---|
+| | | |
+
+**그림자 원칙**: <!-- CUSTOMIZE: 그림자를 어떤 의도로, 몇 단계로 쓰는지 쓴다 -->
+
+## 7. 할 것과 하지 말 것
+
+### 할 것
+
+<!-- CUSTOMIZE: 이 서비스에서 꼭 지킬 것 5~8개 -->
+
+-
+
+### 하지 말 것
+
+아래 항목은 `CHECKLIST.md`의 내용을 요약한 것입니다. 둘이 다르면 `CHECKLIST.md`가 기준입니다.
+
+- Figma 밖의 코드, 토큰 JSON, 빌드 파일을 만들거나 고치지 않는다.
+- 변수나 스타일 없이 원시 색상, 원시 간격, 임의 글자 크기를 남기지 않는다.
+- 이름 없는 레이어, Group 남발, 불필요한 Mask를 남기지 않는다.
+- Auto layout 없이 정렬과 간격을 눈대중으로 맞추지 않는다.
+- 텍스트를 Text Style 없이 두거나 Fixed size 텍스트로 고정하지 않는다.
+- 반복되는 UI를 매번 새로 그리지 않는다. 컴포넌트나 인스턴스로 다룬다.
+- Light/Dark, Mobile/Desktop 같은 모드를 한쪽만 확인하고 끝내지 않는다.
+- 포커스, 오류, 비활성 상태를 구분되지 않게 만들지 않는다.
+- 긴 문구, 작은 화면, 접근성 대비를 확인하지 않고 완료했다고 보고하지 않는다.
+
+<!-- CUSTOMIZE: 이 서비스에만 해당하는 금지 사항은 아래에 덧붙인다 -->
+
+## 8. 반응형
+
+### 브레이크포인트
+
+| 이름 | 폭 | 달라지는 것 |
+|---|---|---|
+| | | |
+
+### 터치 영역
+
+-
+
+### 접히는 방식
+
+<!-- CUSTOMIZE: 폭이 줄어들 때 그리드, 내비게이션, 검색 등이 어떻게 바뀌는지 쓴다 -->
+
+-
+
+### 이미지
+
+-
+
+## 9. 에이전트 프롬프트 가이드
+
+### 빠른 참조
+
+<!-- CUSTOMIZE: 에이전트가 바로 써야 하는 핵심 변수, 스타일, 컴포넌트를 적는다 -->
+
+| 용도 | Figma 변수 또는 스타일 | 쓰는 곳 | 비고 |
 |---|---|---|---|
-| 화면의 기본 바탕 | `Surface/Default` | #fdfdfd | #111212 |
-| 바탕 위로 올라온 면 | `Surface/Raised` | #ffffff | #171717 |
-| 사용자가 읽어야 하는 기본 텍스트 | `Text/Primary` | #1a1b1c | #eeeeef |
-| 주 텍스트를 보조하는 텍스트 | `Text/Secondary` | #515355 | #b9bbbd |
-| 화면에서 대비가 가장 높은 주요 행동의 채움 | `Fill/Primary/Default` | #1a1b1c | #eeeeef |
-| 브랜드 색으로 시선을 끄는 행동의 채움 | `Fill/Accent/Default` | #156cdd | #005dca |
-| 되돌리기 어려운 파괴적 행동의 채움 | `Fill/Danger/Default` | #d02c2a | #be1219 |
-| 면과 면의 경계를 보여주는 외곽선 | `Border/Default` | #d0d1d2 | #48494a |
-| 키보드 포커스 링 | `Border/Focus` | #156cdd | #95c0ff |
+| | | | |
 
-| 글자 크기 | Mobile | Tablet | Desktop |
-|---|---|---|---|
-| `Font Size/Display` | 28px | 32px | 40px |
-| `Font Size/Heading Lg` | 24px | 24px | 28px |
-| `Font Size/Heading Md` | 20px | 20px | 24px |
-| `Font Size/Heading Sm` | 18px | 18px | 18px |
-| `Font Size/Body` | 16px | 16px | 16px |
-| `Font Size/Body Sm` | 14px | 14px | 14px |
-| `Font Size/Caption` | 12px | 12px | 12px |
-| `Font Size/Label Lg` | 16px | 16px | 16px |
-| `Font Size/Label Md` | 14px | 14px | 14px |
-| `Font Size/Label Sm` | 13px | 13px | 13px |
-<!-- GENERATED:END -->
+### 컴포넌트 프롬프트 예시
 
-## 타이포그래피
+<!-- CUSTOMIZE: 에이전트에게 그대로 줄 수 있는 문장 3~5개를 쓴다 -->
 
-- 글꼴은 Pretendard 하나. 위계는 크기와 굵기로만 만든다.
-- 텍스트는 Text Style로만 지정한다. 조합 표는 [semantic-responsive.md](design-system/tokens/semantic-responsive.md#text-style-바인딩).
+-
 
-## 레이아웃
+### 반복 작업 순서
 
-- 4px 단위. 화면 좌우 여백은 `Margin/Page`, 섹션 사이는 `Gap/Section`.
-- 모바일 우선. 폭 768에서 Tablet, 1280에서 Desktop 모드로 바뀐다.
-- 터치 가능한 요소는 최소 44×44 (`Hit Area/Min`).
+<!-- CUSTOMIZE: 화면을 고쳐 나갈 때 먼저 확인할 것부터 순서대로 5~7개를 쓴다 -->
 
-## 컴포넌트
-
-- 버튼: Primary(화면당 하나), Accent(눈에 띄어야 하는 보조 행동), Danger(파괴적 행동). 자세한 규칙은 [button.md](design-system/tokens/components/button.md).
-
-## 하지 말 것
-
-- 원시 색값과 원시 px
-- 주요 버튼을 브랜드 파랑으로 칠하기 (주요 버튼은 Primary — 라이트 검정, 다크 흰색)
-- 한 화면에 Primary 버튼 두 개
-- 포커스를 채움 색 변화로 표현하기 (포커스 링을 쓴다)
+1.
