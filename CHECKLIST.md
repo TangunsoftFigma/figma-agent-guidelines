@@ -52,7 +52,8 @@ Figma 화면을 만들거나 고친 뒤, 완료 보고 전에 확인합니다.
 | CHK-41 | 인스턴스를 불필요하게 Detach하지 않았다. |
 | CHK-42 | 버튼, 입력, 카드, 내비게이션의 상태와 배리언트가 구분된다. |
 | CHK-43 | 컴포넌트 안의 레이어 이름은 역할을 알 수 있게 적었다. |
-| CHK-44 | 새 컴포넌트의 크기와 구조는 `design-system/component-patterns.md`의 레시피를 확인했다. |
+| CHK-44 | 새 컴포넌트의 기본 규칙은 `design-system/component-guidelines/rules.md`의 SH·LA·PR 항목을 확인했다. |
+| CHK-45 | 새 컴포넌트의 모범 수치와 구조는 필요할 때 `design-system/component-patterns.md`의 레시피를 확인했다. |
 
 ## F. 모드와 접근성
 
@@ -71,7 +72,7 @@ Figma 화면을 만들거나 고친 뒤, 완료 보고 전에 확인합니다.
 - 변수와 스타일: CHK-10 Pass · CHK-11 미확인 · CHK-14~15 Pass
 - 화면 구조: CHK-20~24 Pass
 - 텍스트: CHK-30~32 Pass
-- 컴포넌트: CHK-40 Pass · CHK-41 해당 없음 · CHK-44 Pass
+- 컴포넌트: CHK-40 Pass · CHK-41 해당 없음 · CHK-44~45 Pass
 - 모드와 접근성: CHK-50 미확인 · CHK-51 Pass
 - 수정 제안: 필요한 다음 수정 사항
 ```

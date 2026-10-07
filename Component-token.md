@@ -106,12 +106,14 @@ Figma 과제에서 Hover가 필요 없다면 만들지 않아도 됩니다. 실�
 ## 만들기 순서
 
 1. 컴포넌트가 실제로 반복되는지 확인한다.
-2. `design-system/component-patterns.md`에서 같은 컴포넌트의 구조와 수치 범위를 확인한다.
-3. 필요한 배리언트와 상태만 적는다.
-4. 파트를 나눈다.
-5. 각 파트가 어떤 Semantic Token을 참조할지 정한다.
-6. Figma 컴포넌트에 연결한다.
-7. 인스턴스에서 값이 덮어써지지 않는지 확인한다.
+2. `design-system/component-guidelines/rules.md`에서 컴포넌트 제작·수정 규칙을 확인한다.
+3. 필요할 때만 `shape.md`, `layout.md`, `properties.md`를 추가로 읽는다.
+4. 모범 수치와 구조가 필요하면 `design-system/component-patterns.md`에서 같은 컴포넌트의 레시피를 확인한다.
+5. 필요한 배리언트와 상태만 적는다.
+6. 파트를 나눈다.
+7. 각 파트가 어떤 Semantic Token을 참조할지 정한다.
+8. Figma 컴포넌트에 연결한다.
+9. 인스턴스에서 값이 덮어써지지 않는지 확인한다.
 
 ## 하지 말 것
 

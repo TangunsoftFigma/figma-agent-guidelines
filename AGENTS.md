@@ -10,8 +10,9 @@
 
 1. 먼저 `DESIGN.md`를 읽고 서비스의 분위기, 색, 글자, 컴포넌트, 레이아웃 기준을 파악한다.
 2. Figma 변수나 토큰이 필요한 작업이면 `Token.md`를 읽고, 필요한 단계의 토큰 문서만 추가로 읽는다.
-3. Figma 작업을 마치면 `CHECKLIST.md`로 점검한다.
-4. 판단이 안 되는 내용은 추측하지 말고, 수강생에게 어떤 항목을 더 채워야 하는지 묻는다.
+3. 컴포넌트를 만들거나 고칠 때는 `design-system/component-guidelines/rules.md`를 먼저 읽고, 설명이 필요한 주제 파일만 추가로 읽는다.
+4. Figma 작업을 마치면 `CHECKLIST.md`로 점검한다.
+5. 판단이 안 되는 내용은 추측하지 말고, 수강생에게 어떤 항목을 더 채워야 하는지 묻는다.
 
 ## 작업 범위
 
@@ -23,6 +24,10 @@
 | Foundation 토큰 제안 | `Foundation-token.md` | 원재료 변수 목록 |
 | Semantic 토큰 제안 | `Semantic-token.md` | 화면에서 쓸 의미 변수 목록 |
 | Component 토큰 제안 | `Component-token.md` | 컴포넌트별 변수 목록 |
+| 컴포넌트 제작·수정 | `design-system/component-guidelines/rules.md` | Shape · Layout · Properties 규칙 |
+| 컴포넌트 Shape 상세 | `design-system/component-guidelines/shape.md` | 크기·패딩·radius·터치 영역 |
+| 컴포넌트 Layout 상세 | `design-system/component-guidelines/layout.md` | Fixed / Hug / Fill, 레이어 구조 |
+| 컴포넌트 Properties 상세 | `design-system/component-guidelines/properties.md` | Boolean · Text · Instance swap · Nested · Slot |
 | 컴포넌트 크기·구조 참고 | `design-system/component-patterns.md` | 공개 디자인 시스템 기반 레시피 |
 | 컴포넌트 사용 방식 정리 | `DESIGN.md`의 컴포넌트 섹션 | 컴포넌트·배리언트 제안 |
 | 작업 검증 | `CHECKLIST.md` | 점검 결과 보고 |
@@ -38,10 +43,11 @@
 7. Group, 불필요한 Mask, 기본 이름 그대로 남은 레이어를 피한다.
 8. 텍스트는 Text Style을 우선 사용한다.
 9. 버튼, 입력, 카드, 내비게이션처럼 반복되는 요소는 컴포넌트나 인스턴스로 다룬다.
-10. 컴포넌트의 크기와 구조를 정할 때는 `design-system/component-patterns.md`의 레시피를 먼저 확인한다.
-11. Light/Dark, Mobile/Desktop 같은 모드가 있으면 한쪽만 확인하고 끝내지 않는다.
-12. 포커스 상태는 채움 색만 바꾸지 말고 링이나 명확한 외곽선으로 표현한다.
-13. `DESIGN.md`에 없는 중요한 디자인 결정을 새로 해야 하면 먼저 제안하고 승인을 받는다.
+10. 컴포넌트를 만들거나 고칠 때는 `design-system/component-guidelines/rules.md`의 SH·LA·PR 규칙을 먼저 확인한다.
+11. 컴포넌트의 모범 크기와 구조가 필요하면 `design-system/component-patterns.md`의 레시피를 확인한다.
+12. Light/Dark, Mobile/Desktop 같은 모드가 있으면 한쪽만 확인하고 끝내지 않는다.
+13. 포커스 상태는 채움 색만 바꾸지 말고 링이나 명확한 외곽선으로 표현한다.
+14. `DESIGN.md`에 없는 중요한 디자인 결정을 새로 해야 하면 먼저 제안하고 승인을 받는다.
 
 ## 여러 프레임을 처리할 때
 
